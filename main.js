@@ -6,6 +6,7 @@ const passMsg = document.querySelector('.password-msg')
 const rePassMsg = document.querySelector('.re-password-msg')
 const loginMsg = document.querySelector('.login-msg')
 const submitBtn = document.querySelector('.form-submit')
+const regex = /^\w+([\.-]?\w+)+@[a-zA-Z]([\.-]?\w{1,9})\.([a-zA-Z]{2,3})$/;
 
 submitBtn.addEventListener('click', submit)
 
@@ -20,7 +21,7 @@ function submit(event) {
         userMsg.innerText = 'Please enter your username.'
         userMsg.style.visibility = 'visible'
         sendData = false;
-    }else if (userVal.indexOf('@') === -1 || userVal.indexOf('.') === -1) {
+    }else if (!regex.test(userVal)) {
         userMsg.innerText = 'Please enter a valid username.'
         userMsg.style.visibility = 'visible'
         sendData = false;
